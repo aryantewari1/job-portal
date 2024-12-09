@@ -1,5 +1,11 @@
+import { Button } from "./components/ui/button";
+
 const App = () => {
-  return <div>NOTBASICKK</div>;
+  return (
+    <div className="">
+      <Button>NOTBASICKK</Button>
+    </div>
+  );
 };
 
 export default App;
