@@ -15,6 +15,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const LandingPage = () => {
   return (
@@ -80,7 +81,34 @@ const LandingPage = () => {
           </div>
         ))}
       </section>
-      <section></section>
+      <section className="flex justify-center gap-x-5 sm:gap-x-20">
+        <div>
+          <Card className="hover:shadow-lg transition-all">
+            <CardHeader>
+              <CardTitle className="text-2xl text-center">
+                <span className="sm:text-3xl pr-1">Job</span> लेने{" "}
+                <span className="pl-1 sm:text-3xl">waale.</span>
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="text-md">
+              Search and apply for jobs, track applications, and more.
+            </CardContent>
+          </Card>
+        </div>
+        <div>
+          <Card className="hover:shadow-lg transition-all">
+            <CardHeader>
+              <CardTitle className="text-2xl text-center">
+                <span className="sm:text-3xl pr-1">Job</span> देने{" "}
+                <span className="pl-1 sm:text-3xl">waale.</span>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              Post jobs, manage applications, and find the best candidates.
+            </CardContent>
+          </Card>
+        </div>
+      </section>
       <section className="flex flex-col items-center ">
         <div className="w-full max-w-96 sm:max-w-xl md:max-w-3xl lg:max-w-5xl xl:max-w-7xl">
           <h2 className="text-2xl sm:text-2xl md:text-3xl lg:text-6xl font-extrabold p-4 sm:p-6 text-center text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-blue-500 to-black">
