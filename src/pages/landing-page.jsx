@@ -1,5 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { Tweet } from "react-tweet";
+import tweets from "../data/tweets.json";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
 
 const LandingPage = () => {
   return (
@@ -27,7 +34,34 @@ const LandingPage = () => {
           </Button>
         </Link>
       </div>
-      <section></section>
+      <div>
+        <h2 className="text-4xl sm:text-6xl sm:mt-14 font-extrabold tracking-tight text-center">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-blue-500 to-black">
+            लोगो
+          </span>{" "}
+          Ki kahin{" "}
+          <span className="text-transparent bg-clip-text bg-gradient-to-l from-red-500 via-blue-500 to-black">
+            Baatein
+          </span>
+        </h2>
+      </div>
+
+      <section className="hidden sm:flex sm:justify-center sm:items-center">
+        <Carousel className="sm:w-3/4 lg:w-full max-w-7xl">
+          <CarouselContent className="w-full flex gap-x-8 sm:gap-x-12">
+            {tweets.map((t) => (
+              <CarouselItem
+                key={t.id}
+                className="sm:basis-1/2 lg:basis-1/3 xl:basis-1/4"
+              >
+                <div className="w-80">
+                  <Tweet id={t.id} />
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
+      </section>
     </main>
   );
 };

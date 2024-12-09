@@ -10,8 +10,8 @@ const Header = () => {
   return (
     <header className=" px-14 py-8 flex items-center justify-between">
       <Link to="/">
-        <div className="font-anton text-2xl sm:text-4xl hover:opacity-75">
-          Jobsthal
+        <div className=" font-anton text-2xl sm:text-4xl hover:opacity-75">
+          Job<span className="font-extrabold">स्थल</span>
         </div>
       </Link>
       <div className="">
