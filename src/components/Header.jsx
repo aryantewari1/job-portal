@@ -2,7 +2,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import { SignedIn, SignedOut, SignIn, UserButton } from "@clerk/clerk-react";
 import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
-import { PenBox } from "lucide-react";
+import { BriefcaseBusiness, Heart, PenBox } from "lucide-react";
 
 const Header = () => {
   const [showSignIn, setShowSignIn] = useState(false);
@@ -39,17 +39,32 @@ const Header = () => {
           </button>
         </SignedOut>
         <SignedIn className="">
-          <Button className="bg-blue-600">
-            <PenBox size={16} />
-            Post a job
-          </Button>
+          <Link to="/post-job">
+            <Button className="">
+              <PenBox size={16} />
+              Post a job
+            </Button>
+          </Link>
           <UserButton
             appearance={{
               elements: {
                 avatarBox: "w-10 h-10",
               },
             }}
-          ></UserButton>
+          >
+            <UserButton.MenuItems>
+              <UserButton.Link
+                label="My jobs"
+                labelIcon={<BriefcaseBusiness size={15} />}
+                href="/my-jobs"
+              />
+              <UserButton.Link
+                label="Saved jobs"
+                labelIcon={<Heart size={15} />}
+                href="/saved-jobs"
+              />
+            </UserButton.MenuItems>
+          </UserButton>
         </SignedIn>
       </div>
       {showSignIn && (
