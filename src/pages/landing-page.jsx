@@ -2,11 +2,19 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Tweet } from "react-tweet";
 import tweets from "../data/tweets.json";
+import faq from "../data/faq.json";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const LandingPage = () => {
   return (
@@ -25,7 +33,7 @@ const LandingPage = () => {
       <div className="flex justify-center items-center gap-6">
         <Link to="/jobs">
           <Button size="xl" variant="black">
-            Find Jobs
+            Find a Job
           </Button>
         </Link>
         <Link to="/post-job">
@@ -47,7 +55,10 @@ const LandingPage = () => {
       </div>
 
       <section className="hidden sm:flex sm:justify-center sm:items-center">
-        <Carousel className="sm:w-3/4 lg:w-full max-w-7xl">
+        <Carousel
+          className="sm:w-3/4 lg:w-full max-w-7xl"
+          plugins={[Autoplay({ delay: 1000 })]}
+        >
           <CarouselContent className="w-full flex gap-x-8 sm:gap-x-12">
             {tweets.map((t) => (
               <CarouselItem
@@ -61,6 +72,38 @@ const LandingPage = () => {
             ))}
           </CarouselContent>
         </Carousel>
+      </section>
+      <section className="block sm:hidden w-full flex flex-col justify-center items-center">
+        {tweets.map((t) => (
+          <div key={t.id} className="block w-80">
+            <Tweet id={t.id} />
+          </div>
+        ))}
+      </section>
+      <section></section>
+      <section className="flex flex-col items-center ">
+        <div className="w-full max-w-96 sm:max-w-xl md:max-w-3xl lg:max-w-5xl xl:max-w-7xl">
+          <h2 className="text-2xl sm:text-2xl md:text-3xl lg:text-6xl font-extrabold p-4 sm:p-6 text-center text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-blue-500 to-black">
+            फ्रीquently asked questions
+          </h2>
+          {faq.map((f, i) => (
+            <Accordion
+              type="single"
+              collapsible
+              key={f.answer}
+              className="mb-4 shadow-lg p-5 rounded-xl"
+            >
+              <AccordionItem value={i + 1}>
+                <AccordionTrigger className="text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-blue-500 to-black">
+                  {f.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-lg">
+                  {f.answer}
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          ))}
+        </div>
       </section>
     </main>
   );
