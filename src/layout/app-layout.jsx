@@ -8,8 +8,8 @@ const AppLayout = () => {
       <main className="min-h-screen container">
         <Header />
         <Outlet />
-        <Footer />
       </main>
+      <Footer />
     </div>
   );
 };
