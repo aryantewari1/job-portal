@@ -1,11 +1,8 @@
-import { Button } from "./components/ui/button";
+import router from "./routes/routes";
 
+import { RouterProvider } from "react-router-dom";
 const App = () => {
-  return (
-    <div className="">
-      <Button>NOTBASICKK</Button>
-    </div>
-  );
+  return <RouterProvider router={router} />;
 };
 
 export default App;
