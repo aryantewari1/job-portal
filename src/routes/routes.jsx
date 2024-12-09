@@ -5,6 +5,9 @@ import LandingPage from "@/pages/landing-page";
 import Onboarding from "@/pages/onboarding";
 import { createBrowserRouter } from "react-router-dom";
 import ProtectedRoute from "./protected-route";
+import SavedJobs from "@/pages/saved-jobs";
+import MyJobs from "@/pages/my-jobs";
+import Job from "@/pages/job";
 
 const routes = createBrowserRouter([
   {
@@ -35,6 +38,30 @@ const routes = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <JobsPosting />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/saved-jobs",
+        element: (
+          <ProtectedRoute>
+            <SavedJobs />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/my-jobs",
+        element: (
+          <ProtectedRoute>
+            <MyJobs />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/job/:id",
+        element: (
+          <ProtectedRoute>
+            <Job />
           </ProtectedRoute>
         ),
       },

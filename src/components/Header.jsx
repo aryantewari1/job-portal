@@ -1,12 +1,8 @@
 import { Link, useSearchParams } from "react-router-dom";
-import {
-  SignedIn,
-  SignedOut,
-  SignIn,
-  SignInButton,
-  UserButton,
-} from "@clerk/clerk-react";
+import { SignedIn, SignedOut, SignIn, UserButton } from "@clerk/clerk-react";
 import { useEffect, useState } from "react";
+import { Button } from "./ui/button";
+import { PenBox } from "lucide-react";
 
 const Header = () => {
   const [showSignIn, setShowSignIn] = useState(false);
@@ -32,7 +28,7 @@ const Header = () => {
           Job<span className="font-extrabold">स्थल</span>
         </div>
       </Link>
-      <div className="">
+      <div className="flex gap-x-6">
         <SignedOut>
           {/**the button wont really work until we add SignIn component as that's what we were being redirected to */}
           <button
@@ -42,8 +38,18 @@ const Header = () => {
             Sign in
           </button>
         </SignedOut>
-        <SignedIn>
-          <UserButton />
+        <SignedIn className="">
+          <Button className="bg-blue-600">
+            <PenBox size={16} />
+            Post a job
+          </Button>
+          <UserButton
+            appearance={{
+              elements: {
+                avatarBox: "w-10 h-10",
+              },
+            }}
+          ></UserButton>
         </SignedIn>
       </div>
       {showSignIn && (
