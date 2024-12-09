@@ -1,5 +1,11 @@
 import { Link, useSearchParams } from "react-router-dom";
-import { SignedIn, SignedOut, SignIn, UserButton } from "@clerk/clerk-react";
+import {
+  SignedIn,
+  SignedOut,
+  SignIn,
+  UserButton,
+  useUser,
+} from "@clerk/clerk-react";
 import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import { BriefcaseBusiness, Heart, PenBox } from "lucide-react";
@@ -7,6 +13,7 @@ import { BriefcaseBusiness, Heart, PenBox } from "lucide-react";
 const Header = () => {
   const [showSignIn, setShowSignIn] = useState(false);
   const [search, setSearch] = useSearchParams();
+  const { user } = useUser();
 
   useEffect(() => {
     if (search.get("sign-in")) {
@@ -39,12 +46,14 @@ const Header = () => {
           </button>
         </SignedOut>
         <SignedIn className="">
-          <Link to="/post-job">
-            <Button className="">
-              <PenBox size={16} />
-              Post a job
-            </Button>
-          </Link>
+          {user?.unsafeMetadata.role === "recruiter" && (
+            <Link to="/post-job">
+              <Button className="">
+                <PenBox size={16} />
+                Post a job
+              </Button>
+            </Link>
+          )}
           <UserButton
             appearance={{
               elements: {

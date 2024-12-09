@@ -16,6 +16,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { PenBox, Search } from "lucide-react";
 
 const LandingPage = () => {
   return (
@@ -34,11 +35,13 @@ const LandingPage = () => {
       <div className="flex justify-center items-center gap-6">
         <Link to="/jobs">
           <Button size="xl" variant="black">
+            <Search size={44} />
             Find a Job
           </Button>
         </Link>
-        <Link to="/post-job">
+        <Link to="/post-job " className="">
           <Button size="xl" variant="gray">
+            <PenBox size={44} />
             Post a Job
           </Button>
         </Link>
@@ -83,30 +86,34 @@ const LandingPage = () => {
       </section>
       <section className="flex justify-center gap-x-5 sm:gap-x-20">
         <div>
-          <Card className="hover:shadow-lg transition-all">
-            <CardHeader>
-              <CardTitle className="text-2xl text-center">
-                <span className="sm:text-3xl pr-1">Job</span> लेने{" "}
-                <span className="pl-1 sm:text-3xl">waale.</span>
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="text-md">
-              Search and apply for jobs, track applications, and more.
-            </CardContent>
-          </Card>
+          <Link to="/jobs">
+            <Card className="hover:shadow-lg transition-all">
+              <CardHeader>
+                <CardTitle className="text-2xl text-center">
+                  <span className="sm:text-3xl pr-1">Job</span> लेने{" "}
+                  <span className="pl-1 sm:text-3xl">waale.</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="text-md">
+                Search and apply for jobs, track applications, and more.
+              </CardContent>
+            </Card>
+          </Link>
         </div>
         <div>
-          <Card className="hover:shadow-lg transition-all">
-            <CardHeader>
-              <CardTitle className="text-2xl text-center">
-                <span className="sm:text-3xl pr-1">Job</span> देने{" "}
-                <span className="pl-1 sm:text-3xl">waale.</span>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              Post jobs, manage applications, and find the best candidates.
-            </CardContent>
-          </Card>
+          <Link to="/post-job">
+            <Card className="hover:shadow-lg transition-all">
+              <CardHeader>
+                <CardTitle className="text-2xl text-center">
+                  <span className="sm:text-3xl pr-1">Job</span> देने{" "}
+                  <span className="pl-1 sm:text-3xl">waale.</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                Post jobs, manage applications, and find the best candidates.
+              </CardContent>
+            </Card>
+          </Link>
         </div>
       </section>
       <section className="flex flex-col items-center ">
