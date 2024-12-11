@@ -39,7 +39,7 @@ const LandingPage = () => {
             Find a Job
           </Button>
         </Link>
-        <Link to="/post-job " className="">
+        <Link to="/post-job" className="">
           <Button size="xl" variant="gray">
             <PenBox size={44} />
             Post a Job
